@@ -12,10 +12,11 @@ export  const useStyles = makeStyles((theme) => ({
 
     },
     paper: {
+        
         padding: theme.spacing(2),
         textAlign: 'center',
         color: theme.palette.text.secondary,
-        borderRadius: "5px",
+        borderRadius: "10px",
         position: 'fixed'
     },
 }))
