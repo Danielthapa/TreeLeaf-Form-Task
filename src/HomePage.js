@@ -1,4 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import InfoForm from './components/InfoForm';
+import InfoList from './components/InfoList';
 
 class HomePage extends Component {
 
@@ -6,6 +8,8 @@ class HomePage extends Component {
         return(
             <div>
                 <h1>HomePage</h1>
+                <InfoForm/>
+                <InfoList/>
             </div>
         )
     }
