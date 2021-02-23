@@ -1,9 +1,11 @@
-import React from 'react'
+import React from 'react';
+import { useStyles } from '../styles/InfoFormStyles';
 
 function InfoForm() {
+    const classes = useStyles();
 
     return(
-        <div>
+        <div className={classes.infoForm}>
             <h1>A form to create user info</h1>
         </div>
     )

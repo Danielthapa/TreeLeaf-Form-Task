@@ -1,15 +1,7 @@
 import React from 'react';
 import UserInfo from './UserInfo';
-import { makeStyles } from '@material-ui/core/styles';
 import GridList from '@material-ui/core/GridList';
-
-const useStyles = makeStyles(() => ({
-    gridList: {
-        width: 500,
-        height: 450
-    },
-    
-}))
+import { useStyles } from '../styles/InfoListStyles';
 
 
 export default function InfoList() {
