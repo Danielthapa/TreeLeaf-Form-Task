@@ -1,23 +1,15 @@
 import React from 'react';
-import UserInfo from './UserInfo';
 import GridList from '@material-ui/core/GridList';
+import UserInfo from './UserInfo';
+import { connect } from 'react-redux';
 import { useStyles } from '../styles/InfoListStyles';
-import { useSelector } from 'react-redux';
-import { v4 as uuidv4} from 'uuid';
+import PropTypes from 'prop-types';
+import { v4 as uuidv4 } from 'uuid';
 
 
-export default function InfoList() {
-
+function InfoList(props) {
     
-    const info = useSelector(state => state.info);        
     const classes = useStyles();
-    console.log(info);
-
-    const users = info.map(user => {
-        return(
-            <UserInfo info={user} key={uuidv4()}/>
-        )
-    })
 
     return(
 
@@ -25,11 +17,32 @@ export default function InfoList() {
             
             <h1>User Details: </h1>
             <GridList cellHeight={200} className={classes.GridList} cols={1} rows={4}>
-                {users}
+
+                {props.infoList.map(info => (
+                    <UserInfo
+                    key={uuidv4()}
+                    name={info.name}
+                    phone={info.phone}
+                    />
+
+                ))}            
                 
             </GridList>
             
         </>
     )
 }
+InfoList.propTypes = {
+    infoList: PropTypes.array
+}
+
+
+
+const mapStateToProps = state => {
+    return {
+        infoList: state.info
+    }
+}
+ 
+export default connect(mapStateToProps)(InfoList);
 

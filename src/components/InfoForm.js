@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { v4 as uuidv4} from 'uuid';
-import infoAdded from '../redux/UserInfo';
+import { connect } from 'react-redux';
+import { addInfo } from '../redux/reducers/index';
 import { useStyles } from '../styles/InfoFormStyles';
+import PropTypes from 'prop-types';
 
-function InfoForm() {
+function InfoForm(props) {
 
-    const dispatch = useDispatch();
 
     const classes = useStyles();
 
@@ -16,30 +15,18 @@ function InfoForm() {
     const onNameChanged = e => setName(e.target.value);
     const onPhoneChanged = e => setPhone(e.target.value);
 
-    const onInfoSubmitted = () => {
-        if (name && phone) {
-            dispatch(
-                infoAdded(
-                    {
-                        id: uuidv4(),
-                        name: name,
-                        email: "dtdaniel27@gmail.com",
-                        phone: phone,
-                        dob: "10 feb, 1997",
-                        address: {
-                            city: "birtamod",
-                            district: "jhapa",
-                            province: "mechi",
-                            country: "nepal"
-                        } 
-                    }
-                )
-            )
-
-            setName('');
-            setPhone('');
+    const handleAddInfo = e => {
+        e.preventDefault();
+        let newInfo = {
+            "name": name,
+            "phone": phone
         }
+        //dispatches actions to add info
+        props.addInfo(newInfo);
+        setName("");
+        setPhone("");
     }
+
 
     return(
         <div className={classes.infoForm}>
@@ -61,10 +48,33 @@ function InfoForm() {
                     onChange={onPhoneChanged}
                     placeholder="Phone no."
                 />
-                <button type="submit" onClick={onInfoSubmitted}>Submit</button>
+                <button type="submit" onClick={handleAddInfo}>Submit</button>
             </form>
         </div>
     )
 }
 
-export default InfoForm;
+InfoForm.propTypes = {
+    addInfo: PropTypes.func
+}
+
+const mapStateToProps = state => {
+    return {
+        name: state.info.name
+    }
+        
+    
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+        addInfo: newInfo => dispatch(addInfo(newInfo))
+    }
+}
+
+
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+) (InfoForm);

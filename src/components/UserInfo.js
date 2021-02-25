@@ -13,14 +13,6 @@ import PropTypes from 'prop-types';
 export default function UserInfo(props) {
     
     const classes = useStyles();
-    const name = props.info.name;
-    const email = props.info.email;
-    const phone = props.info.phone;
-    const dob = props.info.dob;
-    const city = props.info.address.city;
-    const district = props.info.address.district;
-    const province = props.info.address.province;
-    const country = props.info.address.country;
 
     return(
         <div>
@@ -28,28 +20,28 @@ export default function UserInfo(props) {
                 <Card className={classes.root}>
                 <CardContent>
                     <Typography variant="h5" component="h2">
-                    Name: {name}
+                    Name: {props.name}
                     </Typography>
                     <Typography variant="h6" component="h2">
-                    email: {email}
+                    email: 
                     </Typography>
                     <Typography variant="h6" component="h2">
-                    Phone No.: {phone}
+                    Phone No.: {props.phone}
                     </Typography>
                     <Typography variant="h6" component="h2">
-                    DOB: {dob}
+                    DOB: 
                     </Typography>
                     <Typography variant="h5" component="h2">
                     Address: 
                     </Typography>
                     <Typography variant="body2" component="p">
-                    City: {city}
+                    City: 
                     <br />
-                    District: {district}
+                    District: 
                     <br/>
-                    Province: {province}
+                    Province: 
                     <br/>
-                    Country: {country}
+                    Country: 
                     </Typography>
                 </CardContent>
                 <CardActions>
@@ -64,6 +56,7 @@ export default function UserInfo(props) {
 }
 
 UserInfo.propTypes = {
-    info: PropTypes.object
+    name: PropTypes.string,
+    phone: PropTypes.string
 }
 

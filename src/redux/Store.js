@@ -1,11 +1,11 @@
-import { configureStore } from '@reduxjs/toolkit';
-import userInfo from './UserInfo';
+import { createStore } from 'redux';
+import infoReducer from '../redux/reducers/infoReducer';
+import logger from 'redux-logger';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import { applyMiddleware } from '@reduxjs/toolkit';
 
-const infoReducer = userInfo.reducer;
+const composeEnhancers = composeWithDevTools({});
 
-export default configureStore({
-    reducer: {
-        info: infoReducer
-    }
-})
+const store =  createStore(infoReducer, composeEnhancers(applyMiddleware(logger)));
 
+export default store;
