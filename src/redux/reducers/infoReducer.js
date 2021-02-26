@@ -19,7 +19,7 @@ const infoReducer = (state = initialState, action) => {
         case DELETE_INFO: {
             return {
                 ...state,
-                info: state.info.filter(id => id != action.payload)
+                info: state.info.filter(info => info.id != action.payload)
             }
         }
 
