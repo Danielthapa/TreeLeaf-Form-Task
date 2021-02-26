@@ -5,7 +5,7 @@ A User registration WebApp built using React and Redux library.
 
 ![CRUD OEPRATIONS](https://github.com/Danielthapa/TreeLeaf-Form-Task/blob/master/infoCrud.gif?raw=true)
 
-![infoList](https://github.com/Danielthapa/TreeLeaf-Form-Task/blob/master/infoList.JPG?raw=true)
+![infoList](https://github.com/Danielthapa/TreeLeaf-Form-Task/blob/master/InfoList.JPG?raw=true)
 
 ![Profile.gif](https://github.com/Danielthapa/TreeLeaf-Form-Task/blob/master/profile.gif?raw=true)
 
