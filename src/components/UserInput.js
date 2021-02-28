@@ -91,10 +91,12 @@ function UserInput(props) {
             <div className={classes.logo}>
                 <img className={classes.logoImg} src={treeLeafLogo} alt="logo"/>
             </div>
+
               
                     <div className={classes.title}>User Registration</div>
                     <div className={classes.subTitle}>Fill up your Personal details below</div>
                     <div className={classes.input}>
+                        
                         <div className={classes.inputNameDiv}>
                             <input className={classes.inputName} 
                             placeholder="Name"
@@ -118,6 +120,7 @@ function UserInput(props) {
                                 name="phone"
                                 value={phone}
                                 onChange={onPhoneChanged}
+                                pattern="^\d{5,}$"
                                 placeholder="Phone no."
                                 required/>
                         </div>

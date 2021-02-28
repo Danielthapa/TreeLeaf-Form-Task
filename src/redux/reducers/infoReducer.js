@@ -25,9 +25,11 @@ const infoReducer = (state = initialState, action) => {
 
         case EDIT_INFO: {
             const { newInfo, id } = action.payload;
+            const filteredInfo = state.info.filter(delid => delid != id);
+            const editedInfo = [...filteredInfo, newInfo];
             return {
                 ...state,
-                info: state.info.filter(delid => delid != id).push(newInfo)
+                info: editedInfo
 
             }
         }

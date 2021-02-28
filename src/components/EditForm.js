@@ -17,20 +17,13 @@ function EditForm(props) {
 
     const handleEditInfo = e => {
         e.preventDefault();
-        let newInfo = {
-            "id": props.id,
+        const setInfo = {
             "name": name,
-            "phone": phone,
             "email": email,
-            "dob": "",
-            "city": "",
-            "district": "",
-            "province": "",
-            "country": ""
-            
+            "phone": phone
         }
         //dispatches actions to add info
-        props.editInfo(newInfo, props.id);
+        props.editInfo(setInfo);
         setName("");
         setPhone("");
         setEmail("");
@@ -60,7 +53,7 @@ function EditForm(props) {
                     name="email"
                     value={phone}
                     onChange={onPhoneChanged}
-                    placeholder="Email."
+                    placeholder="phone no."
                     required/>           
                 
             

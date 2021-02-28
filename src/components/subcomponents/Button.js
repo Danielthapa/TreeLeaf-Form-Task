@@ -12,7 +12,7 @@ class Button extends Component {
         const { classes, buttonText, onClick } = this.props
 
         return(
-            <div className={classes.button} onClick={onClick}>
+            <div type="submit" className={classes.button} onClick={onClick}>
                 
                 <p className={classes.buttonText}>{buttonText}</p>
             </div>

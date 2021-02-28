@@ -2,7 +2,7 @@ import React from 'react'
 import '../../styles/ShowInfoCard.css';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { deleteInfo } from '../../redux/reducers/index';
+import { deleteInfo, editInfo } from '../../redux/reducers/index';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import EditForm from '../EditForm';
@@ -11,6 +11,10 @@ import EditForm from '../EditForm';
 function ShowInfoCard(props) {
 
     const [isEditing, setEdit] = useState(false);
+
+    const date = props.dob.getDate();
+    const month = props.dob.getMonth();
+    const year = props.dob.getYear(); 
 
     const handleDelete = () => {
         props.deleteInfo(props.id)
@@ -25,9 +29,23 @@ function ShowInfoCard(props) {
         setEdit(false);
     }
 
-    const date = props.dob.getDate();
-    const month = props.dob.getMonth();
-    const year = props.dob.getYear();    
+    const editInfo = (newInfo) => {
+        let setInfo = {
+            "id": props.id,
+            "name": newInfo.name,
+            "phone": newInfo.phone,
+            "email": newInfo.email,
+            "dob": "",
+            "city": props.city,
+            "district": props.district,
+            "province": props.province,
+            "country": props.country
+            
+        };
+        props.editInfo(setInfo, props.id);
+    }
+
+       
 
     if(!isEditing) {
         return(
@@ -65,7 +83,7 @@ function ShowInfoCard(props) {
         )
     } 
     return (
-        <EditForm handleCancel={cancelEdit} id={props.id}/>
+        <EditForm handleCancel={cancelEdit} id={props.id} editInfo={editInfo}/>
 
     )
         
@@ -82,12 +100,14 @@ ShowInfoCard.propTypes = {
     province: PropTypes.string,
     country: PropTypes.string,
     id: PropTypes.string,
-    deleteInfo: PropTypes.func
+    deleteInfo: PropTypes.func,
+    editInfo: PropTypes.func
 }
 
 const mapDispatchToProps = dispatch => {
     return{
-        deleteInfo: id => dispatch(deleteInfo(id))
+        deleteInfo: id => dispatch(deleteInfo(id)),
+        editInfo: (showInfo, id) => dispatch(editInfo(showInfo, id))
     }
 }
 
